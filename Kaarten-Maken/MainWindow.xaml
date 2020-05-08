@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kaarten_Maken"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
         <Image Source="IMG/summa_logo.jpg" Width="175" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40"></Image>
+
+        <StackPanel Margin="0,100,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Button x:Name="Rode_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Rode Kaarten</Button>
+            <Button x:Name="Gele_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Gele Kaarten</Button>
+            <Button x:Name="Blauwe_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Blauwe Kaarten</Button>
+        </StackPanel>
+        
         
     </Grid>
 </Window>
