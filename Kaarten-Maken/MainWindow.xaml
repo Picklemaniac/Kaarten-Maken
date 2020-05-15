@@ -20,5 +20,12 @@
             <TextBlock FontSize="20" Width="200" Height="50" TextAlignment="Center" Foreground="#FFFFFF" Background="#bcd0e9">Test</TextBlock>
             <TextBlock FontSize="20" Width="200" Height="50" TextAlignment="Center" Foreground="#FFFFFF" Background="#bcd0e9">Test</TextBlock>
         </ListBox>
+        
+        <StackPanel Margin="0,-40,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <TextBox  Margin="10" FontSize="25" Width="250" Height="120"></TextBox>
+            <Button x:Name="Add_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Nieuwe Kaart</Button>
+            <Button x:Name="Edit_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Kaart Aanpassen</Button>
+            <Button x:Name="Delete_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Kaart Verwijderen</Button>
+        </StackPanel>
     </Grid>
 </Window>
