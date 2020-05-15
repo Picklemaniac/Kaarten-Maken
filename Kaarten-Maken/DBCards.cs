@@ -17,19 +17,24 @@ namespace Kaarten_Maken
             _conn = new MySqlConnection(connectie);
         }
 
-        public DataTable GetCards(string categorie, string kleur)
+        public DataView GetCards(string categorie, string kleur)
         {
             _conn.Open();
-            MySqlCommand show = _conn.CreateCommand();
-            show.CommandText = "SELECT * FROM cards WHERE categorie = '@categorie' AND kleur = '@kleur'";
-            show.Parameters.AddWithValue("@kleur", kleur);
-            show.Parameters.AddWithValue("@categorie", kleur);
-            MySqlDataReader reader = show.ExecuteReader();
 
-            DataTable dvData = new DataTable();
-            dvData.Load(reader);
+            MySqlCommand command = _conn.CreateCommand();
+
+            command.CommandText = "SELECT * FROM cards WHERE categorie = '@categorie' AND kleur = '@kleur'";
+            command.Parameters.AddWithValue("@kleur", kleur);
+            command.Parameters.AddWithValue("@categorie", kleur);
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            DataTable firstdatatable = new DataTable();
+            firstdatatable.Load(reader);
+
             _conn.Close();
-            return dvData;
+
+            return firstdatatable.DefaultView;
         }
 
         public void NewCard(string categorie, string kleur, string text)
