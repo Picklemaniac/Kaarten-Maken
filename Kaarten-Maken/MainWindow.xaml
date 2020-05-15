@@ -10,6 +10,10 @@
         <Image Source="IMG/summa_logo.jpg" Width="175" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40"></Image>
 
         <StackPanel Margin="0,100,0,0" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <ComboBox x:Name="Categorie" FontSize="15" Width="100">
+                <ComboBoxItem IsSelected="True">School</ComboBoxItem>
+                <ComboBoxItem>Stage</ComboBoxItem>
+            </ComboBox>
             <Button x:Name="Rode_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Rode Kaarten</Button>
             <Button x:Name="Gele_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Gele Kaarten</Button>
             <Button x:Name="Blauwe_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Blauwe Kaarten</Button>
@@ -21,7 +25,7 @@
             <TextBlock FontSize="20" Width="200" Height="50" TextAlignment="Center" Foreground="#FFFFFF" Background="#bcd0e9">Test</TextBlock>
         </ListBox>
         
-        <StackPanel Margin="0,-40,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
+        <StackPanel Margin="0,-10,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
             <TextBox  Margin="10" FontSize="25" Width="250" Height="120"></TextBox>
             <Button x:Name="Add_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Nieuwe Kaart</Button>
             <Button x:Name="Edit_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Kaart Aanpassen</Button>
