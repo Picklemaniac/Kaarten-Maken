@@ -20,24 +20,16 @@ namespace Kaarten_Maken
     /// </summary>
     public partial class MainWindow : Window
     {
+        DBCards database = new DBCards();
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Rode_Kaarten_Click(object sender, RoutedEventArgs e)
+        private void Kaarten_Click(object sender, RoutedEventArgs e)
         {
-            Get_Cards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), "rood");
-        }
-
-        private void Gele_Kaarten_Click(object sender, RoutedEventArgs e)
-        {
-            Get_Cards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", ""), "geel");
-        }
-
-        private void Blauwe_Kaarten_Click(object sender, RoutedEventArgs e)
-        {
-            Get_Cards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", ""), "blauw");
+            database.GetCards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), ((Button)sender).Tag);
         }
     }
 }

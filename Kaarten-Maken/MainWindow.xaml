@@ -14,9 +14,9 @@
                 <ComboBoxItem IsSelected="True">School</ComboBoxItem>
                 <ComboBoxItem>Stage</ComboBoxItem>
             </ComboBox>
-            <Button x:Name="Rode_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Click="Rode_Kaarten_Click">Rode Kaarten</Button>
-            <Button x:Name="Gele_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Click="Gele_Kaarten_Click">Gele Kaarten</Button>
-            <Button x:Name="Blauwe_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Click="Blauwe_Kaarten_Click">Blauwe Kaarten</Button>
+            <Button x:Name="Rode_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Tag="rood" Click="Kaarten_Click">Rode Kaarten</Button>
+            <Button x:Name="Gele_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Tag="geel" Click="Kaarten_Click">Gele Kaarten</Button>
+            <Button x:Name="Blauwe_Kaarten" Background="#3d64ac" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Tag="blauw" Click="Kaarten_Click">Blauwe Kaarten</Button>
         </StackPanel>
 
         <ListBox x:Name="Kaarten" Height="400" Margin="30,20,30,20" HorizontalAlignment="Center" VerticalAlignment="Center">
