@@ -47,5 +47,34 @@ namespace Kaarten_Maken
 
             _conn.Close();
         }
+
+        public void UpdateCard(int id, string text)
+        {
+            _conn.Open();
+
+            MySqlCommand command = _conn.CreateCommand();
+            command.CommandText = "UPDATE cards set text = '@text' where id = @id";
+
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@text", text);
+
+            command.ExecuteNonQuery();
+
+            _conn.Close();
+        }
+
+        public void DeleteCard(int id)
+        {
+            _conn.Open();
+
+            MySqlCommand command = _conn.CreateCommand();
+            command.CommandText = "DELETE FROM CARDS WHERE id = @id;";
+
+            command.Parameters.AddWithValue("@id", id);
+
+            command.ExecuteNonQuery();
+
+            _conn.Close();
+        }
     }
 }
