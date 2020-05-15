@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,11 @@ namespace Kaarten_Maken
 
         private void Kaarten_Click(object sender, RoutedEventArgs e)
         {
-            database.GetCards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), ((Button)sender).Tag.ToString());
+            DataView cardlist = database.GetCards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), ((Button)sender).Tag.ToString());
+
+            Kaarten.SelectedValuePath = "text";
+            Kaarten.DisplayMemberPath = "text";
+            Kaarten.ItemsSource = cardlist;
         }
     }
 }
