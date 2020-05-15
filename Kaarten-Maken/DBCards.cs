@@ -13,7 +13,7 @@ namespace Kaarten_Maken
         MySqlConnection _conn;
         public DBCards()
         {
-            string connectie = string.Concat("Server=sql7.freemysqlhosting.net;Database=sql7338721;Uid=sql7338721;Pwd=PMXUjM37mF;");
+            string connectie = "Server=localhost;Database=Test;Uid=root;Pwd=;";
             _conn = new MySqlConnection(connectie);
         }
 
@@ -23,12 +23,12 @@ namespace Kaarten_Maken
 
             MySqlCommand command = _conn.CreateCommand();
 
-            command.CommandText = "SELECT * FROM cards WHERE categorie = '@categorie' AND kleur = '@kleur'";
+            command.CommandText = "SELECT * FROM cards WHERE Categorie = '@categorie' AND Kleur = '@kleur';";
             command.Parameters.AddWithValue("@kleur", kleur);
-            command.Parameters.AddWithValue("@categorie", kleur);
+            command.Parameters.AddWithValue("@categorie", categorie);
 
             MySqlDataReader reader = command.ExecuteReader();
-
+            Console.WriteLine(reader.ToString());
             DataTable firstdatatable = new DataTable();
             firstdatatable.Load(reader);
 

@@ -35,6 +35,8 @@ namespace Kaarten_Maken
             Kaarten.SelectedValuePath = "text";
             Kaarten.DisplayMemberPath = "text";
             Kaarten.ItemsSource = cardlist;
+
+            Card_Content.Text = cardlist.ToString();
         }
     }
 }
