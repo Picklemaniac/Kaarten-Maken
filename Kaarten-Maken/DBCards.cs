@@ -17,12 +17,13 @@ namespace Kaarten_Maken
             _conn = new MySqlConnection(connectie);
         }
 
-        public DataTable GetCardNormal(string kleur)
+        public DataTable GetCardSchool(string categorie, string kleur)
         {
             _conn.Open();
             MySqlCommand show = _conn.CreateCommand();
-            show.CommandText = "select * from cards where categorie = 'school' and kleur = '@kleur'";
+            show.CommandText = "SELECT * FROM cards WHERE categorie = '@categorie' AND kleur = '@kleur'";
             show.Parameters.AddWithValue("@kleur", kleur);
+            show.Parameters.AddWithValue("@categorie", kleur);
             MySqlDataReader reader = show.ExecuteReader();
 
             DataTable dvData = new DataTable();
@@ -31,18 +32,20 @@ namespace Kaarten_Maken
             return dvData;
         }
 
-        public DataTable GetCardStage(string kleur)
+        public void NewCard(string categorie, string kleur, string text)
         {
             _conn.Open();
-            MySqlCommand show = _conn.CreateCommand();
-            show.CommandText = "select * from cards where categorie = 'stage' and kleur = '@kleur'";
-            show.Parameters.AddWithValue("@kleur", kleur);
-            MySqlDataReader reader = show.ExecuteReader();
 
-            DataTable dvData = new DataTable();
-            dvData.Load(reader);
+            MySqlCommand command = _conn.CreateCommand();
+            command.CommandText = "INSERT INTO cards(categorie,kleur,text) VALUES('@categorie','@kleur','@text')";
+
+            command.Parameters.AddWithValue("@categorie", categorie);
+            command.Parameters.AddWithValue("@kleur", kleur);
+            command.Parameters.AddWithValue("@text", text);
+
+            command.ExecuteNonQuery();
+
             _conn.Close();
-            return dvData;
         }
     }
 }
