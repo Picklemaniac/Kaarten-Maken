@@ -24,5 +24,20 @@ namespace Kaarten_Maken
         {
             InitializeComponent();
         }
+
+        private void Rode_Kaarten_Click(object sender, RoutedEventArgs e)
+        {
+            Get_Cards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), "rood");
+        }
+
+        private void Gele_Kaarten_Click(object sender, RoutedEventArgs e)
+        {
+            Get_Cards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", ""), "geel");
+        }
+
+        private void Blauwe_Kaarten_Click(object sender, RoutedEventArgs e)
+        {
+            Get_Cards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", ""), "blauw");
+        }
     }
 }
