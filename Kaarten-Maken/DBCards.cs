@@ -17,7 +17,7 @@ namespace Kaarten_Maken
             _conn = new MySqlConnection(connectie);
         }
 
-        public DataTable GetCardSchool(string categorie, string kleur)
+        public DataTable GetCards(string categorie, string kleur)
         {
             _conn.Open();
             MySqlCommand show = _conn.CreateCommand();
