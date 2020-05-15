@@ -29,7 +29,7 @@ namespace Kaarten_Maken
 
         private void Kaarten_Click(object sender, RoutedEventArgs e)
         {
-            database.GetCards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), ((Button)sender).Tag);
+            database.GetCards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), ((Button)sender).Tag.ToString());
         }
     }
 }
