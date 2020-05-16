@@ -21,6 +21,9 @@ namespace Kaarten_Maken
     /// </summary>
     public partial class MainWindow : Window
     {
+        string kleur;
+        string categorie;
+
         DBCards database = new DBCards();
 
         public MainWindow()
@@ -28,13 +31,71 @@ namespace Kaarten_Maken
             InitializeComponent();
         }
 
-        private void Kaarten_Click(object sender, RoutedEventArgs e)
+        private void Getcards()
         {
-            DataView cardlist = database.GetCards(Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower(), ((Button)sender).Tag.ToString());
-
+            DataView cardlist = database.GetCards(categorie, kleur);
             Kaarten.SelectedValuePath = "text";
             Kaarten.DisplayMemberPath = "text";
             Kaarten.ItemsSource = cardlist;
+        }
+
+        private void Kaarten_Click(object sender, RoutedEventArgs e)
+        {
+            categorie = Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower();
+            kleur = ((Button)sender).Tag.ToString();
+            Getcards();
+        }
+
+        private void Add_Card_Click(object sender, RoutedEventArgs e)
+        {
+            categorie = Categorie.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower();
+
+            if (kleur == null || Card_Content.Text == "")
+            {
+                MessageBox.Show("Selecteer eerst een kleur en voeg text in.");
+            }
+            else
+            {
+                database.NewCard(categorie, kleur, Card_Content.Text);
+            }   
+
+            Getcards();
+        }
+
+        private void Kaarten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView dr = (DataRowView)Kaarten.SelectedItem;
+            if (dr != null)
+            {
+                Card_Content.Text = dr["text"].ToString();
+            }
+        }
+
+        private void Delete_Card_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView dr = (DataRowView)Kaarten.SelectedItem;
+            if (dr != null)
+            {
+                MessageBoxResult r = MessageBox.Show("Weet u zeker dat u de kaart  '" + Card_Content.Text + "' wilt verwijderen?",
+            "Verwijderen",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
+
+                if (r == MessageBoxResult.Yes)
+                {
+                    database.DeleteCard(Card_Content.Text);
+                    Getcards();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecteer alstublieft eerst een kaart");
+            }
+
         }
     }
 }

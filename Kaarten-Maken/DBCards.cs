@@ -42,7 +42,7 @@ namespace Kaarten_Maken
             _conn.Open();
 
             MySqlCommand command = _conn.CreateCommand();
-            command.CommandText = "INSERT INTO cards(categorie,kleur,text) VALUES('@categorie','@kleur','@text')";
+            command.CommandText = "INSERT INTO cards(categorie,kleur,text) VALUES(@categorie,@kleur,@text)";
 
             command.Parameters.AddWithValue("@categorie", categorie);
             command.Parameters.AddWithValue("@kleur", kleur);
@@ -58,7 +58,7 @@ namespace Kaarten_Maken
             _conn.Open();
 
             MySqlCommand command = _conn.CreateCommand();
-            command.CommandText = "UPDATE cards set text = '@text' where id = @id";
+            command.CommandText = "UPDATE cards set text = @text where id = @id";
 
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@text", text);
@@ -68,14 +68,14 @@ namespace Kaarten_Maken
             _conn.Close();
         }
 
-        public void DeleteCard(int id)
+        public void DeleteCard(string text)
         {
             _conn.Open();
 
             MySqlCommand command = _conn.CreateCommand();
-            command.CommandText = "DELETE FROM CARDS WHERE id = @id;";
+            command.CommandText = "DELETE FROM CARDS WHERE text = @text;";
 
-            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@text", text);
 
             command.ExecuteNonQuery();
 
