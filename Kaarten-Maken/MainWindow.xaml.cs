@@ -104,7 +104,7 @@ namespace Kaarten_Maken
             if (dr != null && Card_Content.Text != "")
             {
                 MessageBoxResult r = MessageBox.Show("Weet u zeker dat u de kaart  '" + dr["text"].ToString() + "' wilt aanpassen?",
-            "Verwijderen",
+            "Aanpassen",
             MessageBoxButton.YesNo,
             MessageBoxImage.Question);
 
