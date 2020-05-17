@@ -53,15 +53,15 @@ namespace Kaarten_Maken
             _conn.Close();
         }
 
-        public void UpdateCard(int id, string text)
+        public void UpdateCard(string text_old, string text_new)
         {
             _conn.Open();
 
             MySqlCommand command = _conn.CreateCommand();
-            command.CommandText = "UPDATE cards set text = @text where id = @id";
+            command.CommandText = "UPDATE cards set text = @text_new where text = @text_old";
 
-            command.Parameters.AddWithValue("@id", id);
-            command.Parameters.AddWithValue("@text", text);
+            command.Parameters.AddWithValue("@text_old", text_old);
+            command.Parameters.AddWithValue("@text_new", text_new);
 
             command.ExecuteNonQuery();
 

@@ -97,5 +97,31 @@ namespace Kaarten_Maken
             }
 
         }
+
+        private void Edit_Card_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView dr = (DataRowView)Kaarten.SelectedItem;
+            if (dr != null && Card_Content.Text != "")
+            {
+                MessageBoxResult r = MessageBox.Show("Weet u zeker dat u de kaart  '" + dr["text"].ToString() + "' wilt aanpassen?",
+            "Verwijderen",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
+
+                if (r == MessageBoxResult.Yes)
+                {
+                    database.UpdateCard(dr["text"].ToString(), Card_Content.Text);
+                    Getcards();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecteer alstublieft eerst een kaart en vul de nieuwe tekst in");
+            }
+        }
     }
 }

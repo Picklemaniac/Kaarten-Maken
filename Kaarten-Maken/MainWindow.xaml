@@ -26,7 +26,7 @@
         <StackPanel Margin="0,-10,0,0" VerticalAlignment="Center" HorizontalAlignment="Right">
             <TextBox x:Name="Card_Content" Margin="10" FontSize="15" Width="250" Height="120" TextWrapping="Wrap"></TextBox>
             <Button x:Name="Add_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Click="Add_Card_Click">Nieuwe Kaart</Button>
-            <Button x:Name="Edit_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60">Kaart Aanpassen</Button>
+            <Button x:Name="Edit_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Click="Edit_Card_Click">Kaart Aanpassen</Button>
             <Button x:Name="Delete_Card" Background="Purple" Foreground="White" Margin="10" FontSize="25" Width="250" Height="60" Click="Delete_Card_Click">Kaart Verwijderen</Button>
         </StackPanel>
     </Grid>
